@@ -1,5 +1,9 @@
 package tn.poste.hello.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -12,14 +16,24 @@ import tn.poste.hello.repositories.UserRepository;
 public class UserService {
 	
 	private UserRepository userRepos;
-	
+	// save in Db
 	public void saveUserToDb(User user) {
-		UserEntity entity = new UserEntity();
-		entity.setFirstName(user.getFirstName());
-		entity.setLastName(user.getLastName());
-		entity.setDob(user.getDob());
+		ModelMapper mapper = new ModelMapper();
+		UserEntity entity = mapper.map(user, UserEntity.class);
 		userRepos.save(entity);
 		System.out.println("User is Saved");
 	}
+	
+	public List<User> getUserList(){
+		List<UserEntity> listEntites = userRepos.findAll();
+		List<User> listUsers = new ArrayList<>();
+		ModelMapper mapper = new ModelMapper();
+		
+		for (UserEntity entity : listEntites) {
+			listUsers.add(mapper.map(entity, User.class));
+		}
+		return listUsers;
+	}
+	
 
 }
