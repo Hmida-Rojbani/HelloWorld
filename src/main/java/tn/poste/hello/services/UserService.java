@@ -16,19 +16,19 @@ import tn.poste.hello.repositories.UserRepository;
 public class UserService {
 	
 	private UserRepository userRepos;
+	private ModelMapper mapper;
 	// save in Db
 	public void saveUserToDb(User user) {
-		ModelMapper mapper = new ModelMapper();
+		
 		UserEntity entity = mapper.map(user, UserEntity.class);
 		userRepos.save(entity);
 		System.out.println("User is Saved");
 	}
 	
+	// select *
 	public List<User> getUserList(){
 		List<UserEntity> listEntites = userRepos.findAll();
-		List<User> listUsers = new ArrayList<>();
-		ModelMapper mapper = new ModelMapper();
-		
+		List<User> listUsers = new ArrayList<>();	
 		for (UserEntity entity : listEntites) {
 			listUsers.add(mapper.map(entity, User.class));
 		}

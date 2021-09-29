@@ -1,5 +1,7 @@
 package tn.poste.hello.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +30,14 @@ public class UserCtrl {
 	public String getUserForm(Model model, @ModelAttribute("user") User user) {
 		System.out.println(user);
 		userService.saveUserToDb(user);
-		model.addAttribute("user", new User());
-		return "user/user-form";
+		return "redirect:/show/user";
+	}
+	
+	@GetMapping("/show/user")
+	public String getUserFromDB(Model model) {
+		List<User> listUser = userService.getUserList();
+		model.addAttribute("listUser", listUser);
+		return "user/list-user";
 	}
 
 }
