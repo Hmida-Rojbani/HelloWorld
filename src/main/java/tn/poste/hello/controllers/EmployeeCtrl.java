@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import tn.poste.hello.services.EmployeeService;
 
 @Controller
-@AllArgsConstructor
 public class EmployeeCtrl {
 
 	private EmployeeService empService;
