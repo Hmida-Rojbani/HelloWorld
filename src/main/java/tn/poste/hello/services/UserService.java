@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+import tn.poste.hello.entities.Empolyee;
 import tn.poste.hello.entities.UserEntity;
 import tn.poste.hello.models.ui.User;
 import tn.poste.hello.repositories.UserRepository;
@@ -34,6 +35,8 @@ public class UserService {
 		}
 		return listUsers;
 	}
+	
+	
 	
 
 }
