@@ -28,18 +28,21 @@
 				<div class="rendered-form">
 					<div class="formbuilder-text form-group field-text-1632837087952">
 						<label for="text-1632837087952" class="formbuilder-text-label">First
-							Name</label> <input type="text" class="form-control"
+							Name</label> <input  type="text"  class="form-control" th:classappend="${#fields.hasErrors('firstName')}? is-invalid : is-valid"
 							name="text-1632837087952" th:field="*{firstName}">
+							<small class="text-danger form-text text-muted" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</small>
 					</div>
 					<div class="formbuilder-text form-group field-text-1632837091283">
 						<label for="text-1632837091283" class="formbuilder-text-label">Last
-							Name</label> <input type="text" class="form-control"
+							Name</label> <input type="text" class="form-control" th:classappend="${#fields.hasErrors('lastName')}? is-invalid : is-valid"
 							name="text-1632837091283" th:field="*{lastName}">
+							<small class="text-danger form-text text-muted"  th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</small>
 					</div>
 					<div class="formbuilder-date form-group field-date-1632837096483">
 						<label for="date-1632837096483" class="formbuilder-date-label">Date
-							Of Birth</label> <input type="date" class="form-control"
-							name="date-1632837096483" th:field="*{dob}">
+							Of Birth</label> <input type="date" class="form-control" th:classappend="${#fields.hasErrors('dob')}? is-invalid : is-valid"
+							name="date-1632837096483" th:field="*{dobHtml}">
+							<small class="text-danger form-text text-muted"  th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}">Name Error</small>
 					</div>
 					<div
 						class="formbuilder-textarea form-group field-textarea-1632837105487">
@@ -67,9 +70,12 @@
 				</div>
 			</div>
 		</form>
+		
 	</div>
 
-
+	<div class="justify-content-center align-items-center container">
+		<span><a href="/">Home</a></span>
+	</div>
 
 
 	<!-- Vendor JS Files -->

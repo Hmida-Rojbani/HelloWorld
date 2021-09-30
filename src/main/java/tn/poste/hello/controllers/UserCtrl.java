@@ -2,9 +2,12 @@ package tn.poste.hello.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +30,10 @@ public class UserCtrl {
 	}
 
 	@PostMapping("/add/user")
-	public String getUserForm(Model model, @ModelAttribute("user") User user) {
+	public String getUserForm(Model model,@Valid @ModelAttribute("user") User user, BindingResult results) {
+		if (results.hasErrors()) {
+			return "user/user-form";
+		}
 		System.out.println(user);
 		userService.saveUserToDb(user);
 		return "redirect:/show/user";
