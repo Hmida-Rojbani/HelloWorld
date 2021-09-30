@@ -14,10 +14,10 @@ public class User {
 	
 	private Long id;
 	@NotBlank(message = "Field First name must not be empty")
-	@Size(max = 50, min = 5, message = "Number of characters allowed is between 5 and 50")
+	@Size(max = 50, min = 3, message = "Number of characters allowed is between 5 and 50")
 	private String firstName;
 	@NotBlank(message = "Field Last name must not be empty")
-	@Size(max = 50, min = 5, message = "Number of characters allowed is between 5 and 50")
+	@Size(max = 50, min = 3, message = "Number of characters allowed is between 5 and 50")
 	private String lastName;
 	@Past(message = "Give a date in the past")
 	private LocalDate dob = LocalDate.now();
