@@ -16,6 +16,7 @@ public class EmployeeCtrl {
 	public String addEmp() {
 		empService.testAddData();
 		empService.getAll();
+		empService.getAllCreator();
 		return "redirect:/";
 	}
 }
