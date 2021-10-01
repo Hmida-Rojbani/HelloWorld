@@ -2,6 +2,8 @@ package tn.poste.hello.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -36,7 +38,17 @@ public class UserService {
 		return listUsers;
 	}
 	
+	public User getUserById(Long id) {
+		
+		Optional<UserEntity> entity =userRepos.findById(id);
+		UserEntity userEntity= entity.orElseThrow(() -> new NoSuchElementException());
+		return mapper.map(userEntity, User.class);
+	}
 	
+	public void deleteUserById(Long id) {
+		getUserById(id);
+		userRepos.deleteById(id);
+	}
 	
 
 }

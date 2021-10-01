@@ -21,41 +21,42 @@
 <link href="/assets/css/style-hello.css" rel="stylesheet">
 </head>
 <body>
-        <span >
-			<h2>List Of Users</h2>
-		</span>
+	<span>
+		<h2>List Of Users</h2>
+	</span>
 	<div class="d-flex justify-content-center align-items-center container">
-		
-		<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">Id</th>
-					<th scope="col">First Name</th>
-					<th scope="col">Last Name</th>
-					<th scope="col">Date Of Birth</th>
-					<th scope="col">Address</th>
-					<th scope="col">Profession</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="user : ${listUser}">
-					<th scope="row" th:text="${user.id}">1</th>
-					<td th:text="${user.firstName}"></td>
-					<td th:text="${user.lastName}"></td>
-					<td th:text="${user.dob}"></td>
-					<td th:text="${user.address}"></td>
-					<td th:text="${user.profession}"></td>
-				</tr>
-			</tbody>
-		</table>
-		
+		<div class="table-responsive-md">
+			<table class="table table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">First Name</th>
+						<th scope="col">Last Name</th>
+						<th scope="col"> </th>
+						<th scope="col"> </th>
+						<th scope="col"> </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${listUser}">
+						<th scope="row" th:text="${user.id}">1</th>
+						<td th:text="${user.firstName}"></td>
+						<td th:text="${user.lastName}"></td>
+						<td > <a th:href="@{'/show/user/'+${user.id}}"> View </a>   </td>
+						<td > <a th:href="@{'/update/user/'+${user.id}}"> Update </a>  </td>
+						<td > <a th:href="@{'/delete/user/'+${user.id}}"> Delete </a> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	
+
 	<div class="justify-content-center align-items-center container">
 		<span><a href="/">Home</a></span>
 		<div></div>
 		<span><a href="/add/user">Add User</a></span>
-		</div>F
+	</div>
+	
 
 
 

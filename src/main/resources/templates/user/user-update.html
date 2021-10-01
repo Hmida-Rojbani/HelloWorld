@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleag.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add User</title>
+
+<!-- Vendor CSS Files -->
+<link href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="/assets/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet">
+<link href="/assets/vendor/glightbox/css/glightbox.min.css"
+	rel="stylesheet">
+<link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="/assets/vendor/swiper/swiper-bundle.min.css"
+	rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="/assets/css/style-hello.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="d-flex justify-content-center align-items-center container">
+		<form action="/add/user" method="post" th:object="${user}">
+			<div class="card py-5 px-3">
+				<div class="rendered-form">
+					<div class="formbuilder-text form-group field-text-1632837087952">
+					<input hidden="true" type="text"  class="form-control" th:classappend="${#fields.hasErrors('id')}? is-invalid : is-valid"
+							name="text-1632837087952" th:field="*{id}">
+						<label for="text-1632837087952" class="formbuilder-text-label">First
+							Name</label> <input  type="text"  class="form-control" th:classappend="${#fields.hasErrors('firstName')}? is-invalid : is-valid"
+							name="text-1632837087952" th:field="*{firstName}">
+							<small class="text-danger form-text text-muted" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</small>
+					</div>
+					<div class="formbuilder-text form-group field-text-1632837091283">
+						<label for="text-1632837091283" class="formbuilder-text-label">Last
+							Name</label> <input type="text" class="form-control" th:classappend="${#fields.hasErrors('lastName')}? is-invalid : is-valid"
+							name="text-1632837091283" th:field="*{lastName}">
+							<small class="text-danger form-text text-muted"  th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</small>
+					</div>
+					<div class="formbuilder-date form-group field-date-1632837096483">
+						<label for="date-1632837096483" class="formbuilder-date-label">Date
+							Of Birth</label> <input type="date" class="form-control" th:classappend="${#fields.hasErrors('dob')}? is-invalid : is-valid"
+							name="date-1632837096483" th:field="*{dobHtml}">
+							<small class="text-danger form-text text-muted"  th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}">Name Error</small>
+					</div>
+					<div
+						class="formbuilder-textarea form-group field-textarea-1632837105487">
+						<label for="textarea-1632837105487"
+							class="formbuilder-textarea-label">Address</label>
+						<textarea type="textarea" class="form-control"
+							name="textarea-1632837105487" th:field="*{address}"></textarea>
+					</div>
+					<div
+						class="formbuilder-select form-group field-select-1632837109527">
+						<label for="select-1632837109527" class="formbuilder-select-label">Profession</label>
+						<select class="form-control" name="select-1632837109527"
+							id="select-1632837109527" th:field="*{profession}">
+							<option
+								th:each="prof : ${T(tn.poste.hello.models.ui.Profession).values()}"
+								th:value="${prof}" th:text="${prof}"></option>
+
+						</select>
+					</div>
+					<div class="text-center mt-5">
+						<span class="d-block mobile-text">
+							<button type="submit" class="btn btn-primary">Update User</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
+		
+	</div>
+
+	<div class="justify-content-center align-items-center container">
+		<span><a href="/">Home</a></span>
+	</div>
+
+
+	<!-- Vendor JS Files -->
+	<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="/assets/vendor/php-email-form/validate.js"></script>
+	<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="/assets/js/main.js"></script>
+</body>
+</html>
